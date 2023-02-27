@@ -26,8 +26,22 @@ def start_message(message):
 
         db.commit()
 
+@bot.message_handler(content_types=['sticker'])
+def get_stiker(message):
+    bot.send_message(message.chat.id, "Классный стикер! ")
 
 
+def kb_main(message, text = "Сделайте Ваш выбор"):
+    kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    button1 = types.KeyboardButton("Обо мне")
+    button2 = types.KeyboardButton("Мои работы")
+    button3 = types.KeyboardButton("Цены")
+    button4 = types.KeyboardButton("Отзывы")
+    button5 = types.KeyboardButton("Instagram")
+    button6 = types.KeyboardButton("Контакты")
+    button7 = types.KeyboardButton("Запись")
+    kb.add(button1,button2,button3, button4,button5,button6,button7)
+    bot.send_message(message.chat.id,text,reply_markup=kb)
 
 
 
@@ -38,14 +52,7 @@ def start_message(message):
 
 #------------------------ Конец бота
 
-def kb_main(message, text = "Сделайте Ваш выбор"):
-    kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    button1 = types.KeyboardButton("Контакты")
-    button2 = types.KeyboardButton("Режим работы")
-    button3 = types.KeyboardButton("Локация")
-    button4 = types.KeyboardButton("Заказать доставку")
-    kb.add(button1,button2,button3, button4)
-    bot.send_message(message.chat.id,text,reply_markup=kb)
+
 
 def kb_main_1(message, text = "Сделайте Ваш выбор"):
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -162,11 +169,20 @@ def send_text(message):
             bot.send_message(message.chat.id, f"Добрый день,{message.from_user.first_name}, рад Вас слышать")
         elif text == 'admin':
             bot.send_message(message.chat.id, f"Добрый день,{message.from_user.first_name}, Вы вошли, как администратор")
+        elif text == "обо мне":
+            bot.send_message(message.chat.id, f"http://verapiskun.visual.tilda.ws/page28492284.html?fbclid=PAAabbRm1NSuds1JGtavg_mcMMu03wOXAsH8V3tFReh1MnHvENaNBiM8_Ov-0#about")
+        elif text == "мои работы":
+            bot.send_message(message.chat.id, f"http://verapiskun.visual.tilda.ws/page28492284.html?fbclid=PAAabbRm1NSuds1JGtavg_mcMMu03wOXAsH8V3tFReh1MnHvENaNBiM8_Ov-0#rec462471181")
+        elif text == "цены":
+            bot.send_message(message.chat.id, f"http://verapiskun.visual.tilda.ws/page28492284.html?fbclid=PAAabbRm1NSuds1JGtavg_mcMMu03wOXAsH8V3tFReh1MnHvENaNBiM8_Ov-0#rec460415457")
+        elif text == "отзывы":
+            bot.send_message(message.chat.id, f"http://verapiskun.visual.tilda.ws/page28492284.html?fbclid=PAAabbRm1NSuds1JGtavg_mcMMu03wOXAsH8V3tFReh1MnHvENaNBiM8_Ov-0#rec462477331")
+        elif text == "instagram":
+            bot.send_message(message.chat.id, f"https://instagram.com/verapiskun.ph?igshid=YmMyMTA2M2Y=")
         elif text == "контакты":
-            bot.send_message(message.chat.id, f"A1 - +375(44)760-88-90\nМТС - +375(33)380-88-90\nгород - 8(01716)9-05-05\nсайт - http://aleana.by/\ne-mail - weldbi@mail.ru")
-
-        elif text == "режим работы":
-            bot.send_message(message.chat.id, f"ПН-СБ - 8.00-20.00\nВС - 9.00-18.00\nБез обеда")
+            bot.send_message(message.chat.id, f"Телефон: +48 451 604 992 \ne-mail: v_piskun@internet.ru \nViber +375 558 27 78 \nTelegram +375 558 27 78")
+        elif text == "запись":
+            bot.send_message(message.chat.id, f"Телефон: +48 451 604 992 \ne-mail: v_piskun@internet.ru \nViber +375 558 27 78 \nTelegram +375 558 27 78")
 
 
 
@@ -286,9 +302,7 @@ def send_text(message):
         bot.send_message(message.chat.id, "Вы ввели некорректные данные")
 
 
-@bot.message_handler(content_types=['sticker'])
-def get_stiker(message):
-    bot.send_message(message.chat.id, "Классный стикер! ")
+
 
 @bot.callback_query_handler(func = lambda call: True)
 def callback_InLine(call):
