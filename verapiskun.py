@@ -145,6 +145,19 @@ def send_text(message):
                     #bot.send_photo(477068883, i[5])
                 #else:
                    # pass
+        elif text == "6666":
+            kb_admin(message)
+        elif text == "справочник клиентов":
+
+            db = sqlite3.connect("vera_piskun_server.db")
+            sql = db.cursor()
+            for i in sql.execute(f"SELECT * FROM client "):
+
+                bot.send_message(message.chat.id,f"Id клиента - {i[0]},\nИмя клиента - {i[1]},\nТелефон - {i[2]},\nТекст - {i[3]}")
+            kb_admin(message)
+
+
+
         elif wait_type == 1:
             b= text
             bot.send_message(message.chat.id, f"Проверьте ваш запрос:\n{b}")
@@ -168,8 +181,6 @@ def send_text(message):
 
 
 
-        elif text == "6666":
-            kb_admin(message)
 
 
 
@@ -179,14 +190,6 @@ def send_text(message):
 
 
 
-        elif text == "справочник клиентов":
-
-            db = sqlite3.connect("vera_piskun_server.db")
-            sql = db.cursor()
-            for i in sql.execute(f"SELECT * FROM client "):
-
-                bot.send_message(message.chat.id,f"Id клиента - {i[0]},\nИмя клиента - {i[1]},\nТелефон - {i[2]},\nТекст - {i[3]}")
-            kb_admin(message)
 
 
 
