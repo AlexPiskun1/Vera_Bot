@@ -52,7 +52,8 @@ def kb_main(message, text = "Сделайте Ваш выбор"):
 def kb_admin(message, text = "Сделайте Ваш выбор"):
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
     button1 = types.KeyboardButton("Справочник клиентов")
-    kb.add(button1)
+    button2 = types.KeyboardButton("Вернуться в главное меню")
+    kb.add(button1,button2)
     bot.send_message(message.chat.id,text,reply_markup=kb)
 
 def kb_text(message, text = "Все верно введено? "):
@@ -126,8 +127,6 @@ def send_text(message):
             bot.send_message(message.chat.id,f"Введите желаемую дату и формат съемки. В ближайшее время я свяжусь с вами и мы все обсудим.")
             wait_type = 1  # ждем ввода текста
 
-
-
             #bot.send_message(477068883, f"Есть сообщение")
             #db = sqlite3.connect("vera_piskun_server.db")
             #sql = db.cursor()
@@ -156,6 +155,8 @@ def send_text(message):
                 bot.send_message(message.chat.id,f"Id клиента - {i[0]},\nИмя клиента - {i[1]},\nТелефон - {i[2]},\nТекст - {i[3]}")
             kb_admin(message)
 
+        elif text == "вернуться в главное меню":
+            kb_main(message)
 
 
         elif wait_type == 1:
