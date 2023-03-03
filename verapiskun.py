@@ -127,23 +127,7 @@ def send_text(message):
             bot.send_message(message.chat.id,f"Введите желаемую дату и формат съемки. В ближайшее время я свяжусь с вами и мы все обсудим.")
             wait_type = 1  # ждем ввода текста
 
-            #bot.send_message(477068883, f"Есть сообщение")
-            #db = sqlite3.connect("vera_piskun_server.db")
-            #sql = db.cursor()
-            #a = call.message.chat.id
 
-
-            #for i in sql.execute(
-                    #f"SELECT data.id_client, data.day, data.car, data.time, data.text, data.id_foto, dostavka.tel, dostavka.adress   "
-                    #f"FROM dostavka INNER JOIN data ON dostavka.id_client = data.id_client WHERE data.id_client = '{a}'"):
-
-                #bot.send_message(477068883,
-                                 #f"№ ID клиента - {i[0]},\nДата - {i[1]},\nМашина - {i[2]},\nВремя - {i[3]},"
-                                # f"\nЗвонок  - {i[4]},\nТелефон - {i[6]},\nАдрес - {i[7]} ")
-                #if i[5]:
-                    #bot.send_photo(477068883, i[5])
-                #else:
-                   # pass
         elif text == "6666":
             kb_admin(message)
         elif text == "справочник клиентов":
@@ -220,8 +204,20 @@ def callback_InLine(call):
             bot.send_message(call.message.chat.id, f"Введите еще раз")
             wait_type = 1
         if text == "да1":
-            bot.send_message(call.message.chat.id, f"Я скоро свяжусь в вами")
+            bot.send_message(call.message.chat.id, f"Я скоро свяжусь в Вами")
+            bot.send_message(785844839, f"Есть сообщение от Бота")
+            db = sqlite3.connect("vera_piskun_server.db")
+            sql = db.cursor()
+            a = call.message.chat.id
+
+            for i in sql.execute(f"SELECT * FROM client WHERE id = {a} "):
+
+                bot.send_message(785844839,f"Id клиента - {i[0]},\nИмя клиента - {i[1]},\nТелефон - {i[2]},\nТекст - {i[3]}")
+
+
             wait_type = 0
+
+
 
         elif text == "нет1":
             bot.send_message(call.message.chat.id, f"Введите еще раз")
