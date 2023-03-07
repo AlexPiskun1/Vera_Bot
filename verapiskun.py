@@ -122,7 +122,7 @@ def send_text(message):
         elif text == "instagram":
             bot.send_message(message.chat.id, f"https://instagram.com/verapiskun.ph?igshid=YmMyMTA2M2Y=")
         elif text == "контакты":
-            bot.send_message(message.chat.id, f"Телефон: +48 451 604 992 \ne-mail: v_piskun@internet.ru \nViber +375 558 27 78 \nTelegram +375 558 27 78")
+            bot.send_message(message.chat.id, f"Телефон: +48 451 604 992 \ne-mail: piskun.9000@gmail.com \nViber +375 558 27 78 \nTelegram +375 558 27 78")
         elif text == "запись":
             bot.send_message(message.chat.id,f"Введите желаемую дату и формат съемки. В ближайшее время я свяжусь с вами и мы все обсудим.")
             wait_type = 1  # ждем ввода текста
